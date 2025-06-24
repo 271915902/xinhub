@@ -1,0 +1,27 @@
+{
+  "name": "xinhub",
+  "version": "1.0.0",
+  "description": "* 技术栈Node+Koa+MySql\r * 项目接口分面向用户的业务接口和面向内部的后台管理接口\r * 项目功能\r 1.用户管理\r 2.内容管理\r 3.评论管理\r 4.内容标签管理\r 5.文件管理",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/271915902/xinhub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/271915902/xinhub/issues"
+  },
+  "homepage": "https://github.com/271915902/xinhub#readme",
+  "dependencies": {
+    "@koa/router": "^13.1.0",
+    "koa": "^3.0.0",
+    "koa-bodyparser": "^4.4.1",
+    "nodemon": "^3.1.10"
+  }
+}
