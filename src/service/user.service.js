@@ -9,5 +9,10 @@ class UserService {
     const [result] = await connection.execute(statement, [name, password]);
     return result;
   }
+  async findUserByName(name) {
+    const statement = `SELECT * FROM user WHERE name = ?;`;
+    const [result] = await connection.execute(statement, [name]);
+    return result;
+  }
 }
 module.exports = new UserService();
