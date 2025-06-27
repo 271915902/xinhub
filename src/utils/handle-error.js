@@ -2,6 +2,8 @@ const app = require("../app");
 const {
   NAME_OR_PASSWORD_IS_REQUIRED,
   NAME_ALREADY_EXISTED,
+  NAME_IS_NOT_EXISTS,
+  PASSWORD_IS_INCORRENT
 } = require("../config/error");
 app.on("error", (err, ctx) => {
   let code = 0;
@@ -15,6 +17,13 @@ app.on("error", (err, ctx) => {
     case NAME_ALREADY_EXISTED:
       code = -10002;
       message = "用户名已存在！";
+      break;
+    case NAME_IS_NOT_EXISTS:
+      code = -10003;
+      message = "用户名不存在！";
+    case PASSWORD_IS_INCORRENT:
+      code = -10004;
+      message = "密码不正确！";
       break;
   }
   ctx.body = {
