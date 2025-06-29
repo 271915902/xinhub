@@ -7,5 +7,15 @@ class MoentService {
     const [result] = await connection.execute(statement, [content, userId]);
     return result;
   }
+  async queryList(size, offset) {
+    // 和user联合查询 左连接
+    const statement = `SELECT moment.*,JSON_OBJECT('id',user.id,'name',user.name) user FROM moment LEFT JOIN user ON moment.user_id = user.id LIMIT ? OFFSET ?;`;
+    const [result] = await connection.execute(statement, [
+      String(size),
+      String(offset),
+    ]);
+
+    return result;
+  }
 }
 module.exports = new MoentService();

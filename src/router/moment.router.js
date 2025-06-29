@@ -5,5 +5,6 @@ const { verifyAuth } = require("../middleware/login.middleware");
 const momentRouter = new KoaRouter({ prefix: "/moment" });
 
 momentRouter.post("/", verifyAuth, MomentController.create);
+momentRouter.get("/", MomentController.list);
 // 导出路由
 module.exports = momentRouter;
