@@ -17,5 +17,11 @@ class MoentService {
 
     return result;
   }
+  async queryById(momentId) {
+    // 拼接statement
+    const statement = `SELECT moment.*,JSON_OBJECT('id',user.id,'name',user.name) user FROM moment LEFT JOIN user ON moment.user_id = user.id WHERE moment.id = ?;`;
+    const [result] = await connection.execute(statement, [momentId]);
+    return result;
+  }
 }
 module.exports = new MoentService();

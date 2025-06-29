@@ -16,5 +16,15 @@ class MomentController {
       data: result,
     };
   }
+  async detail(ctx, next) {
+    // 获取动态id
+    const momentId = ctx.params.momentId;
+    // 查询动态详情
+    const result = await MoentService.queryById(momentId);
+    ctx.body = {
+      code: 0,
+      data: result,
+    };
+  }
 }
 module.exports = new MomentController();

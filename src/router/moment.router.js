@@ -6,5 +6,7 @@ const momentRouter = new KoaRouter({ prefix: "/moment" });
 
 momentRouter.post("/", verifyAuth, MomentController.create);
 momentRouter.get("/", MomentController.list);
+momentRouter.get("/:momentId", MomentController.detail);
+
 // 导出路由
 module.exports = momentRouter;
