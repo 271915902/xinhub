@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
+
 const { PRIVATE_KEY, PUBLIC_KEY } = require("../config/screct");
 class LoginController {
   sigin(ctx, next) {
-    console.log(PRIVATE_KEY.toString(), "私钥");
     const { id, name } = ctx.user;
     // 颁发token
     const token = jwt.sign({ id, name }, PRIVATE_KEY.toString(), {
