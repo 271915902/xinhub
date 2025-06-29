@@ -9,7 +9,8 @@ function registerRouter(app) {
     app.use(router.routes());
     app.use(router.allowedMethods());
   }
-}
+} 
 module.exports = {
   registerRouter,
 };
+ 

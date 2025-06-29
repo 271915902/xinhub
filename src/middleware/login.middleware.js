@@ -29,7 +29,6 @@ const verifyLogin = async (ctx, next) => {
   await next();
 };
 const verifyAuth = async (ctx, next) => {
-  console.log(ctx.user, "ctx.user");
   // 获取token
   const token = ctx.header.authorization?.replace("Bearer ", "");
   try {
@@ -40,6 +39,7 @@ const verifyAuth = async (ctx, next) => {
     ctx.user = result;
     await next();
   } catch (error) {
+    console.log(error,'我是错误');
     ctx.app.emit("error", UNAUTHORIZATION, ctx);
   }
 };
