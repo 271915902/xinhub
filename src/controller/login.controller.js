@@ -11,7 +11,7 @@ class LoginController {
     });
     ctx.body = {
       code: 0,
-      data: {
+      data: {  
         id,
         name,
         token,

@@ -3,6 +3,7 @@ const MomentController = require("../controller/moment.controller");
 const { verifyAuth } = require("../middleware/login.middleware");
 const {
   verifyMomentPermission,
+  verifyPermission
 } = require("../middleware/permission.middleware");
 // 创建路由对象 评论
 const momentRouter = new KoaRouter({ prefix: "/moment" });
@@ -17,14 +18,14 @@ momentRouter.get("/:momentId", MomentController.detail);
 momentRouter.patch(
   "/:momentId",
   verifyAuth,
-  verifyMomentPermission,
+  verifyPermission,
   MomentController.update
 );
 // 删除
 momentRouter.delete(
   "/:momentId",
   verifyAuth,
-  verifyMomentPermission,
+  verifyPermission,
   MomentController.remove
 );
 
