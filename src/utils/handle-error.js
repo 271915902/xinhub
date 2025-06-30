@@ -5,6 +5,7 @@ const {
   NAME_IS_NOT_EXISTS,
   PASSWORD_IS_INCORRENT,
   UNAUTHORIZATION,
+  OPERATION_IS_NOT_ALLOWED,
 } = require("../config/error");
 app.on("error", (err, ctx) => {
   let code = 0;
@@ -28,6 +29,10 @@ app.on("error", (err, ctx) => {
     case UNAUTHORIZATION:
       code = -10005;
       message = "未授权！";
+      break;
+    case OPERATION_IS_NOT_ALLOWED:
+      code = -10006;
+      message = "操作不被允许！";
       break;
   }
   ctx.body = {
