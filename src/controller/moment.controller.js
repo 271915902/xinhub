@@ -39,5 +39,15 @@ class MomentController {
       data: result,
     };
   }
+  async remove(ctx, next) {
+    // 获取动态id
+    const momentId = ctx.params.momentId;
+    // 删除动态
+    const result = await MoentService.removeById(momentId);
+    ctx.body = {
+      code: 0,
+      data: result,
+    };
+  }
 }
 module.exports = new MomentController();

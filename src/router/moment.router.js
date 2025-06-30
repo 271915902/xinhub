@@ -20,6 +20,13 @@ momentRouter.patch(
   verifyMomentPermission,
   MomentController.update
 );
+// 删除
+momentRouter.delete(
+  "/:momentId",
+  verifyAuth,
+  verifyMomentPermission,
+  MomentController.remove
+);
 
 // 导出路由
 module.exports = momentRouter;
