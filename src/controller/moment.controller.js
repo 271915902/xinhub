@@ -49,5 +49,23 @@ class MomentController {
       data: result,
     };
   }
+  async addLabels(ctx, next) {
+    // 获取动态id
+    const momentId = ctx.params.momentId;
+    // 获取标签
+    const { labels } = ctx;
+    // 添加标签
+    for (const label of labels) {
+      // 判断是否存在关系
+      const isExist = await MoentService.hasLabel(momentId, label.id);
+      if (!isExist) {
+        const result = await MoentService.addLabel(momentId, label.id);
+      }
+    }
+    ctx.body = {
+      code: 0,
+      message: "添加标签成功",
+    };
+  }
 }
 module.exports = new MomentController();

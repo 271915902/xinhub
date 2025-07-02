@@ -32,9 +32,7 @@ momentRouter.post(
   verifyAuth,
   verifyPermission,
   verifyLabelExist,
-  (ctx, next) => {
-    ctx.body = "成";
-  }
+  MomentController.addLabels
 );
 
 // 导出路由
