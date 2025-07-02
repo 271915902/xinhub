@@ -27,7 +27,6 @@ class MoentService {
     return result;
   }
   async updateById(content, momentId) {
-    console.log(content, momentId, "我是参数");
     const statement = `UPDATE moment SET content = ? WHERE id = ?;`;
     const [result] = await connection.execute(statement, [content, momentId]);
     return result;
