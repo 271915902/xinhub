@@ -6,5 +6,10 @@ class LabelService {
     const [result] = await connection.execute(statement, [name]);
     return result;
   }
+  async queryLabelByName(name) {
+    const statement = `SELECT * FROM label WHERE name = ?;`;
+    const [result] = await connection.execute(statement, [name]);
+    return result;
+  }
 }
 module.exports = new LabelService();

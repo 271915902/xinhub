@@ -7,4 +7,6 @@ const labelRouter = new KoaRouter({ prefix: "/label" });
 
 labelRouter.post("/", verifyAuth, LabelController.create);
 
+
 module.exports = labelRouter;
+ 

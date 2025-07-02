@@ -1,10 +1,8 @@
 const KoaRouter = require("@koa/router");
 const MomentController = require("../controller/moment.controller");
 const { verifyAuth } = require("../middleware/login.middleware");
-const {
-  verifyMomentPermission,
-  verifyPermission
-} = require("../middleware/permission.middleware");
+const { verifyPermission } = require("../middleware/permission.middleware");
+const { verifyLabelExist } = require("../middleware/label.middleware");
 // 创建路由对象 评论
 const momentRouter = new KoaRouter({ prefix: "/moment" });
 
@@ -27,6 +25,16 @@ momentRouter.delete(
   verifyAuth,
   verifyPermission,
   MomentController.remove
+);
+// 给动态添加标签
+momentRouter.post(
+  "/:momentId/labels",
+  verifyAuth,
+  verifyPermission,
+  verifyLabelExist,
+  (ctx, next) => {
+    ctx.body = "成";
+  }
 );
 
 // 导出路由
