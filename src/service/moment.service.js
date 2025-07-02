@@ -9,7 +9,10 @@ class MoentService {
   }
   async queryList(size, offset) {
     // 和user联合查询 左连接
-    const statement = `SELECT moment.*,JSON_OBJECT('id',user.id,'name',user.name) user FROM moment LEFT JOIN user ON moment.user_id = user.id LIMIT ? OFFSET ?;`;
+    const statement = `SELECT m.id,m.content,JSON_OBJECT('id',u.id,'name',u.name) user,
+    (SELECT COUNT(*) FROM comment WHERE comment.moment_id = m.id) commentCount
+    FROM moment m LEFT JOIN user u ON u.id=m.user_id
+    LIMIT ? OFFSET ?;`;
     const [result] = await connection.execute(statement, [
       String(size),
       String(offset),
