@@ -1,12 +1,14 @@
 const KoaRouter = require("@koa/router");
 const userController = require("../controller/user.controller");
 // 导入验证中间件
-const { verifyUser,handlePassword } = require("../middleware/user.middleware");
+const { verifyUser, handlePassword } = require("../middleware/user.middleware");
 // 创建路由对象
 const userRouter = new KoaRouter({ prefix: "/users" });
 
 // 定义路由映射
 // 注册接口
 userRouter.post("/", verifyUser, handlePassword, userController.create);
+// 为用户提供头像展示
+userRouter.get("/avatar/:userId", userController.showAvatarImagae);
 // 导出路由
 module.exports = userRouter;
